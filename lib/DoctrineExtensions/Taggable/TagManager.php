@@ -183,13 +183,15 @@ class TagManager
             }
         }
 
+       $to_flush = [];
+       
         foreach ($tagsToAdd as $tag) {
-            $this->em->persist($tag);
-            $this->em->persist($this->createTagging($tag, $resource));
+            $this->em->persist($to_flush[] = $tag);
+            $this->em->persist($to_flush[] = $this->createTagging($tag, $resource));
         }
 
-        if (count($tagsToAdd)) {
-            $this->em->flush();
+        if (count($to_flush)) {
+            $this->em->flush($to_flush);
         }
     }
 
