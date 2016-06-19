@@ -128,7 +128,7 @@ class TagManager
             $loadedNames[] = $tag->getName();
         }
 
-        $missingNames = array_udiff($names, $loadedNames, function(function ($str1, $str2))
+        $missingNames = array_udiff($names, $loadedNames, function($str1, $str2)
         {
             return strcmp(mb_strtolower($str1, 'UTF8'), mb_strtolower($str2, 'UTF8'));
         });
