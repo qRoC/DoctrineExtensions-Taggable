@@ -10,6 +10,8 @@
 
 namespace DoctrineExtensions\Taggable;
 
+use Doctrine\Common\Collections\Collection;
+
 /**
  * Taggable is the interface that Taggable resource classes must implement.
  *
@@ -22,19 +24,19 @@ interface Taggable
      *
      * @return string
      */
-    function getTaggableType();
+    public function getTaggableType();
 
     /**
      * Returns the unique taggable resource identifier
      *
      * @return string
      */
-    function getTaggableId();
+    public function getTaggableId();
 
     /**
      * Returns the collection of tags for this Taggable entity
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return Collection
      */
-    function getTags();
+    public function getTags();
 }
